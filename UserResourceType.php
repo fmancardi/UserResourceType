@@ -28,6 +28,7 @@ class UserResourceTypePlugin extends MantisPlugin {
         $this->version = '1.0.0';
         $this->requires = array(
             'MantisCore' => '2.0.0',
+            'helperMethods' => '1.0.1'
         );
 
         $this->author = 'Francisco Mancardi ';
@@ -41,6 +42,7 @@ class UserResourceTypePlugin extends MantisPlugin {
             'EVENT_MANAGE_USER_CREATE' => 'saveResourceType',
             'EVENT_MANAGE_USER_UPDATE_FORM' => 'manageUserUpdateForm',
             'EVENT_MANAGE_USER_UPDATE' => 'saveResourceType',
+            'EVENT_MANAGE_USER_DELETE' => 'deleteResourceType'
         );
     }
 
@@ -109,8 +111,6 @@ class UserResourceTypePlugin extends MantisPlugin {
      *
      */
     function resourceTypesInputs( $p_user_id = null, $p_operation = null ) {
-        
-        echo __FUNCTION__;
 
         $typeHierarchy = plugin_config_get('typeHierarchy');
 
@@ -224,6 +224,22 @@ class UserResourceTypePlugin extends MantisPlugin {
           $this->updateLinks( $p_user_id, $t_result );          
         }
         
+    }
+
+   /**
+    *
+    */
+    function deleteResourceType( $p_event, $p_user_id ) {
+
+        $t_debug = '/* ' . __METHOD__ . ' */ ';
+        $table = plugin_table('links');
+
+        $t_query = " $t_debug DELETE FROM {$table} 
+                     WHERE user_id=" . db_param();
+
+        $t_sql_param = array($p_user_id);        
+        db_query($t_query,$t_sql_param);             
+
     }
 
     /**
