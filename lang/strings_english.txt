@@ -1,0 +1,18 @@
+<?php
+$s_plugin_UserResourceType_plugin_title = 'User Resource Type';
+$s_plugin_UserResourceType_plugin_description = 'Assign (two) Resourse Type Qualification to an user';
+
+$s_plugin_UserResourceType_mainRType = 'Resource Type (main)';
+$s_plugin_UserResourceType_secRType = 'Resource Type (alternative)';
+
+$s_plugin_UserResourceType_Product_Developer = 'Product Developer';
+$s_plugin_UserResourceType_Product_Technical_Leader = 'Product Technical Leader';
+
+$s_plugin_UserResourceType_Product_Development_Engineer  = 'Product Development Engineer';
+
+$s_plugin_UserResourceType_Product_Development_Manager = 
+'Product Development Manager';
+
+$s_plugin_UserResourceType_Product_Technical_Consultant = 
+'Product Technical Consultant';
+
